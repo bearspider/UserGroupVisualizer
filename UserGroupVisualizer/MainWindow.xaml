@@ -1,0 +1,48 @@
+﻿<Window x:Class="UserGroupVisualizer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UserGroupVisualizer"
+        mc:Ignorable="d"
+        Title="User Group Visualizer" Height="450" Width="700" Icon="Icojam-Blue-Bits-Users.ico">
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="300"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Label Margin="0,5,0,5" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" x:Name="labelUsername" Content="User Name:" HorizontalAlignment="Right"/>
+                <TextBox Margin="0,5,0,5" Grid.Row="0" Grid.Column="1" x:Name="textboxUsername" HorizontalAlignment="Left" Height="24" TextWrapping="Wrap" Width="295" Grid.ColumnSpan="2" TextChanged="textboxUsername_TextChanged"/>
+                <Label Margin="0,5,0,5" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" x:Name="labelDomain" Content="Domain:" HorizontalAlignment="Right"/>
+                <TextBox Margin="0,5,0,5" Grid.Row="1" Grid.Column="1" x:Name="textboxDomain" HorizontalAlignment="Left" Height="24" TextWrapping="Wrap" Width="295" Grid.ColumnSpan="2" TextChanged="textboxDomain_TextChanged"/>
+                <Button Margin ="0,5,0,5" Grid.Row="2" Grid.Column="1" x:Name="buttonSearch" Content="Search" HorizontalAlignment="Center" Height="24" VerticalAlignment="Top" Width="120" Click="buttonSearch_Click" IsEnabled="False"/>
+                <ProgressBar Grid.Row="3" Grid.Column="1" x:Name="progressBar" Height="20" Visibility="Hidden"/>
+                    <TextBlock HorizontalAlignment="Center" Grid.Row="3" Grid.Column="1" x:Name="txtblockProgress" Visibility="Hidden"/>
+                </Grid>
+        </StackPanel>
+        
+            <TreeView Margin="0,5,0,5" Grid.Row="0" Grid.Column="1" x:Name="treeviewGroups" HorizontalAlignment="Right" VerticalAlignment="Top" Visibility="Hidden"/>
+    
+    </Grid>
+    </ScrollViewer>
+</Window>
