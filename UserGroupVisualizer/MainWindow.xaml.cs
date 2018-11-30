@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.DirectoryServices.AccountManagement;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -25,6 +27,8 @@ namespace UserGroupVisualizer
     /// </summary>
     public partial class MainWindow : Window
     {
+        private List<string> groupList = new List<string>();
+        private ObservableCollection<string> matchList = new ObservableCollection<string>();
         public MainWindow()
         {
             InitializeComponent();
@@ -47,10 +51,12 @@ namespace UserGroupVisualizer
                 {
                     GroupSearch(maingroup, groupmember, context);
                 }
+                groupList.Add(group.Name);
                 branch.Subgroups.Add(maingroup);
             }
             else
             {
+                groupList.Add(group.Name);
                 branch.Subgroups.Add(new ADGroup() { Groupname = group.Name });
             }
         }
@@ -156,6 +162,12 @@ namespace UserGroupVisualizer
                 BuildTree(wholetree.Subgroups, rootNode);
                 treeviewGroups.Visibility = Visibility.Visible;
                 treeviewGroups.Items.Add(rootNode);
+
+                if (treeviewGroups.Items.Count > 0)
+                {
+                    labelGroupSearch.IsEnabled = true;
+                    textboxGroupSearch.IsEnabled = true;
+                }
             }
         }
         void BuildTree(ObservableCollection<ADGroup> treenodes, TreeViewItem parent)
@@ -180,6 +192,21 @@ namespace UserGroupVisualizer
                     parent.Items.SortDescriptions.Add(new SortDescription("Header", ListSortDirection.Ascending));
                 }
             }
+        }
+
+        private void TextboxSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            matchList.Clear();
+            Regex newmatch = new Regex(textboxGroupSearch.Text, RegexOptions.IgnoreCase);
+            foreach(string group in groupList)
+            {
+                Match match = newmatch.Match(group);
+                if(match.Success)
+                {
+                    matchList.Add(group);
+                }
+            }
+            datagridResults.ItemsSource = matchList;
         }
     }
 }
