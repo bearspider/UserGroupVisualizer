@@ -40,7 +40,7 @@
                 <Label x:Name="labelGroupSearch" IsEnabled="False" Margin="0,5,0,5" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Content="Group Search:" HorizontalAlignment="Right"/>
                     <TextBox IsEnabled="False" Margin="0,5,0,5" x:Name="textboxGroupSearch" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Height="24" Width="295" TextChanged="TextboxSearch_TextChanged"/>
                     <Button Margin ="0,5,0,5" Grid.Row="3" Grid.Column="1" x:Name="buttonSearch" Content="Search" HorizontalAlignment="Center" Height="24" VerticalAlignment="Top" Width="120" Click="buttonSearch_Click" IsEnabled="False"/>
-                    <ProgressBar Grid.Row="4" Grid.Column="1" x:Name="progressBar" Height="20" Visibility="Hidden"/>
+                    <ProgressBar Margin="0,0,5,0" Grid.Row="4" Grid.Column="1" x:Name="progressBar" Height="20" Visibility="Hidden"/>
                 <TextBlock HorizontalAlignment="Center" Grid.Row="4" Grid.Column="1" x:Name="txtblockProgress" Visibility="Hidden"/>
                     <DataGrid Margin="5,5,5,5" Grid.Row="5" Grid.ColumnSpan="2" AutoGenerateColumns="False" x:Name="datagridResults" CanUserAddRows="False">
                         <DataGrid.Columns>
