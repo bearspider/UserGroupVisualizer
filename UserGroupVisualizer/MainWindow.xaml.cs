@@ -63,7 +63,10 @@ namespace UserGroupVisualizer
         private void buttonSearch_Click(object sender, RoutedEventArgs e)
         {
             treeviewGroups.Visibility = Visibility.Hidden;
-            treeviewGroups.Items.Clear();            
+            treeviewGroups.Items.Clear();
+            groupList.Clear();
+            matchList.Clear();
+            textboxGroupSearch.Clear();
             Helper items = new Helper
             {
                 UserDomain = textboxDomain.Text,
