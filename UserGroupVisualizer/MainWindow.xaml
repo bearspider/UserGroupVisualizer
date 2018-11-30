@@ -25,9 +25,11 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="90"/>
                     <ColumnDefinition Width="300"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
@@ -35,14 +37,21 @@
                 <TextBox Margin="0,5,0,5" Grid.Row="0" Grid.Column="1" x:Name="textboxUsername" HorizontalAlignment="Left" Height="24" TextWrapping="Wrap" Width="295" Grid.ColumnSpan="2" TextChanged="textboxUsername_TextChanged"/>
                 <Label Margin="0,5,0,5" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" x:Name="labelDomain" Content="Domain:" HorizontalAlignment="Right"/>
                 <TextBox Margin="0,5,0,5" Grid.Row="1" Grid.Column="1" x:Name="textboxDomain" HorizontalAlignment="Left" Height="24" TextWrapping="Wrap" Width="295" Grid.ColumnSpan="2" TextChanged="textboxDomain_TextChanged"/>
-                <Button Margin ="0,5,0,5" Grid.Row="2" Grid.Column="1" x:Name="buttonSearch" Content="Search" HorizontalAlignment="Center" Height="24" VerticalAlignment="Top" Width="120" Click="buttonSearch_Click" IsEnabled="False"/>
-                <ProgressBar Grid.Row="3" Grid.Column="1" x:Name="progressBar" Height="20" Visibility="Hidden"/>
-                    <TextBlock HorizontalAlignment="Center" Grid.Row="3" Grid.Column="1" x:Name="txtblockProgress" Visibility="Hidden"/>
+                <Label x:Name="labelGroupSearch" IsEnabled="False" Margin="0,5,0,5" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Content="Group Search:" HorizontalAlignment="Right"/>
+                    <TextBox IsEnabled="False" Margin="0,5,0,5" x:Name="textboxGroupSearch" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Height="24" Width="295" TextChanged="TextboxSearch_TextChanged"/>
+                    <Button Margin ="0,5,0,5" Grid.Row="3" Grid.Column="1" x:Name="buttonSearch" Content="Search" HorizontalAlignment="Center" Height="24" VerticalAlignment="Top" Width="120" Click="buttonSearch_Click" IsEnabled="False"/>
+                    <ProgressBar Grid.Row="4" Grid.Column="1" x:Name="progressBar" Height="20" Visibility="Hidden"/>
+                <TextBlock HorizontalAlignment="Center" Grid.Row="4" Grid.Column="1" x:Name="txtblockProgress" Visibility="Hidden"/>
+                    <DataGrid Margin="5,5,5,5" Grid.Row="5" Grid.ColumnSpan="2" AutoGenerateColumns="False" x:Name="datagridResults" CanUserAddRows="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Group Name" Binding="{Binding}" IsReadOnly="true"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </Grid>
         </StackPanel>
         
             <TreeView Margin="0,5,0,5" Grid.Row="0" Grid.Column="1" x:Name="treeviewGroups" HorizontalAlignment="Right" VerticalAlignment="Top" Visibility="Hidden"/>
-    
-    </Grid>
+
+        </Grid>
     </ScrollViewer>
 </Window>
